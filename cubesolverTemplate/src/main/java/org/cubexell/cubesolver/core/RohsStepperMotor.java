@@ -37,22 +37,22 @@ public class RohsStepperMotor implements Motor{
     public void doTurn(double stepsToTurn, boolean direction) throws InterruptedException {
         for (int i = 0; i < stepsToTurn; i ++){//TODO for all steps to turn
             //TODO for all pins, set the corresponding "in" to high(if 1) or low(if 0) based on the step in the step sequence
-            if (stepSequence[1][i] == 1) {
+            if (stepSequence[0][i] == 1) {
                 in1.high();
             } else {
                 in1.low();
             }
-            if (stepSequence[2][i] == 1) {
+            if (stepSequence[1][i] == 1) {
                 in2.high();
             } else {
                 in2.low();
             }
-            if  (stepSequence[3][i] == 1) {
+            if  (stepSequence[2][i] == 1) {
                 in3.high();
             } else {
                 in3.low();
             }
-            if  (stepSequence[4][i] == 1) {
+            if  (stepSequence[3][i] == 1) {
                 in4.high();
             } else {
                 in4.low();
