@@ -35,12 +35,33 @@ public class RohsStepperMotor implements Motor{
 
     int motorStepCounter = 0;
     public void doTurn(double stepsToTurn, boolean direction) throws InterruptedException {
-        for (){//TODO for all steps to turn
+        for (int i = 0; i < stepsToTurn; i ++){//TODO for all steps to turn
             //TODO for all pins, set the corresponding "in" to high(if 1) or low(if 0) based on the step in the step sequence
+            if (stepSequence[1][i] == 1) {
+                in1.high();
+            } else {
+                in1.low();
+            }
+            if (stepSequence[2][i] == 1) {
+                in2.high();
+            } else {
+                in2.low();
+            }
+            if  (stepSequence[3][i] == 1) {
+                in3.high();
+            } else {
+                in3.low();
+            }
+            if  (stepSequence[4][i] == 1) {
+                in4.high();
+            } else {
+                in4.low();
+            }
+
             if (direction){
-                motorStepCounter;//TODO go to the previous step
+                motorStepCounter = (motorStepCounter - 1 + 8) % 8;//TODO go to the previous step
             } else{
-                motorStepCounter;//TODO go to next step in the sequence
+                motorStepCounter = (motorStepCounter + 1) % 8;;//TODO go to next step in the sequence
             }
             LockSupport.parkNanos(1000000);//wait 1 millisecond
 
@@ -50,8 +71,8 @@ public class RohsStepperMotor implements Motor{
 
     public void turn(double numRotations){
         boolean direction = false;
-        if (){//TODO if numRotations is negative
-            direction;//TODO set direction to true
+        if (numRotations <  0){//TODO if numRotations is negative
+            direction = true;//TODO set direction to true
             numRotations = numRotations*-1;//make it positive now that we have adjusted direction.
         }
         try {
